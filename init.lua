@@ -26,7 +26,18 @@ local plugins={
   -- telescope fuzzy finder
   { 'nvim-telescope/telescope.nvim', tag = '0.1.6', dependencies = { 'nvim-lua/plenary.nvim' } },
   -- treesitter, indent
-  { "nvim-treesitter/nvim-treesitter", build=":TSUpdate"}
+  { "nvim-treesitter/nvim-treesitter", build=":TSUpdate"},
+  -- neotree 
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    }
+}
 }
 
 local opts={}
@@ -39,6 +50,8 @@ vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>Telescope find_files<cr>', {noremap 
 -- alsway instal ripgrep, sudo apt-get install ripgrep
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 
+vim.keymap.set('n', '<leader>fr', ':Neotree filesystem reveal left<CR>')
+
 -- TREE SITTER
 local config = require("nvim-treesitter.configs")
 config.setup({
@@ -50,5 +63,6 @@ config.setup({
 -- catppuccin THEME
 require("catppuccin").setup()
 vim.cmd.colorscheme "catppuccin"
+
 
 
