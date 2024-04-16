@@ -30,3 +30,4 @@ return{
     vim.cmd.colorscheme("night-owl")
   end,
 }
+

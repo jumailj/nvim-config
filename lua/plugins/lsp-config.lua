@@ -21,6 +21,7 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       local lspconfig = require("lspconfig")
+      -- if you add ls to the lspconfig, you have to setup here.
       lspconfig.lua_ls.setup({})
       lspconfig.tsserver.setup({})
       lspconfig.clangd.setup({})
